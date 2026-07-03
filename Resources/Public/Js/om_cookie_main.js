@@ -192,6 +192,9 @@ var omCookieEnableCookieGrp = function (groupKey){
                 obj.forEach((value) => {
                     const val = value.replace(' ', '');
                     document.querySelectorAll(`[data-consent-keyword="${val}"]`).forEach(function (script) {
+                        if (script.attributes['type'].value === 'text/javascript') {
+                            return;
+                        }
                         const newScript = document.createElement('script');
                         // transfer attributes
                         for (let i = 0; i < script.attributes.length; i++) {
